@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" charset="utf-8">
+        let userName;
+        let userEmail;
+        window.onload = userMenuPopout;
+        (function (g, e, n, es, ys) {
+            g['_genesysJs'] = e;
+            g[e] = g[e] || function () {
+                (g[e].q = g[e].q || []).push(arguments)
+            };
+            g[e].t = 1 * new Date();
+            g[e].c = es;
+            ys = document.createElement('script');
+            ys.async = 1;
+            ys.src = n;
+            ys.charset = 'utf-8';
+            document.head.appendChild(ys);
+        })(window, 'Genesys', 'https://apps.mypurecloud.com/genesys-bootstrap/genesys.min.js', {
+            environment: 'prod',
+            deploymentId: 'd1eb9710-3f40-49ea-9f8f-abf9706aacb5'
+        });
+
+
+        function userMenuPopout() {
+
+            let userMenuPopout = document.getElementById("userMenuPopout");
+            if (userMenuPopout) {
+                let userNameElement = userMenuPopout.querySelector(".cmx-user-menu__user-name");
+                let userEmailElement = userMenuPopout.querySelector(".cmx-user-menu__user-email");
+
+                userName = userNameElement.innerText.trim();
+                userEmail = userEmailElement.innerText.trim();
+
+                //alert("Nombre de usuario1: " + userName);
+                //alert("Correo electrónico1:" + userEmail);
+            } else {
+                alert("No se encontró el elemento 'userMenuPopout'");
+            }
+            Genesys("command", "Database.set", {
+                messaging: {
+                    customAttributes: {
+                        userName: userName,
+                        userEmail: userEmail,
+                        order_status: "OK",
+                        browser_language: navigator.language
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<h1>Web Messaging</h1>
+<title>Web Messaging</title>
+<div id="userMenuPopout" class="cmx-user-menu__container popout popout--bottom-left popout--with-border">
+    <div class="cmx-user-menu__user">
+        <div class="cmx-main-nav__icon cmx-main-nav__icon--regular user-menu__user-icon">TH</div>
+        <div class="cmx-user-menu__user-details">
+            <h4 class="cmx-user-menu__user-name">Test Houston</h4>
+            <span class="cmx-user-menu__user-email">houston.shell.test@gmail.com</span>
+        </div>
+        <!-- end .user-menu-details -->
+    </div>
+</div>
+<!-- end .user-menu__sign-out -->
+
+
+</body>
+</html> 
