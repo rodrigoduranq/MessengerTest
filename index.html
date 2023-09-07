@@ -28,12 +28,15 @@
             let userMenuPopout = document.getElementById("userMenuPopout");
             if (userMenuPopout) {
                 let userNameElement = userMenuPopout.querySelector(".cmx-user-menu__user-name");
+                let userLastNameElement = userMenuPopout.querySelector(".cmx-user-menu__user-lastname");
                 let userEmailElement = userMenuPopout.querySelector(".cmx-user-menu__user-email");
 
                 userName = userNameElement.innerText.trim();
+				userLastName = userLastNameElement.innerText.trim();
                 userEmail = userEmailElement.innerText.trim();
 
                 //alert("Nombre de usuario1: " + userName);
+                //alert("Apellido de usuario1: " + userLastName);
                 //alert("Correo electrónico1:" + userEmail);
             } else {
                 alert("No se encontró el elemento 'userMenuPopout'");
@@ -42,6 +45,7 @@
                 messaging: {
                     customAttributes: {
                         userName: userName,
+						userLastName: userLastName,
                         userEmail: userEmail,
                         order_status: "OK",
                         browser_language: navigator.language
@@ -60,8 +64,9 @@
     <div class="cmx-user-menu__user">
         <div class="cmx-main-nav__icon cmx-main-nav__icon--regular user-menu__user-icon">TH</div>
         <div class="cmx-user-menu__user-details">
-            <h4 class="cmx-user-menu__user-name">Test2 Houston</h4>
-            <span class="cmx-user-menu__user-email">houston2.shell.test@gmail.com</span>
+            <h4 class="cmx-user-menu__user-name">Test Name</h4>
+            <span class="cmx-user-menu__user-lastname">Houston</span>
+            <span class="cmx-user-menu__user-email">houston.shell.test@gmail.com</span>
         </div>
         <!-- end .user-menu-details -->
     </div>
